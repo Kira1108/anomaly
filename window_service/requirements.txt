@@ -1,0 +1,7 @@
+tensorflow==2.10.0
+tensorflow-hub==0.12.0
+numpy==1.23.1
+pydantic==2.6.4
+fastapi==0.109.0
+uvicorn==0.26.0
+pillow==10.2.0

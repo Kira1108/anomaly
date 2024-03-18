@@ -1,0 +1,73 @@
+version: '3.9'
+
+services:
+  text_dfa:
+    build: ./dfa_service
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --workers 1
+    volumes: 
+      - ./dfa_service:/usr/src/app
+    ports:
+      - 8040:8000
+
+  ocr:
+    build: ./ocr_service
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --workers 1
+    volumes: 
+      - ./ocr_service:/usr/src/app
+    ports:
+      - 8041:8000
+
+  sex:
+    build: ./sex_service
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --workers 1
+    volumes: 
+      - ./sex_service:/usr/src/app
+    ports:
+      - 8042:8000
+
+  window:
+    build: ./window_service
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --workers 1
+    volumes: 
+      - ./window_service:/usr/src/app
+    ports:
+      - 8043:8000
+
+  web:
+    build: ./backend
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --workers 1
+    volumes: 
+      - ./backend:/usr/src/app
+    ports:
+      - 8004:8000
+    environment:
+      - ENVIRONMENT=dev
+      - TESTING=0
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root123
+      - MYSQL_DB=app_db
+      - DFA_URL=text_dfa
+      - OCR_URL=ocr
+      - SEX_URL=sex
+      - WINDOW_URL=window
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  
+  mysql:
+    image: mysql:8.0
+    ports:
+      - 5306:3306
+    volumes:
+      - ./db-storage:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root123
+      - MYSQL_DATABASE=app_db
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 15s
+      retries: 3
+      start_period: 10s
