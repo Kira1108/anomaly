@@ -38,6 +38,8 @@ dfa_service
 └── service.log
 ```
 
+> 为啥要有上面这一步？ 因为真的是穷的没存储
+
 打镜像
 ```bash
 docker-compose build
