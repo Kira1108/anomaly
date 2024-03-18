@@ -38,12 +38,14 @@ dfa_service
 └── service.log
 ```
 
-启动:
+打镜像
 ```bash
 docker-compose build
+```
 
+启动
+```bash
 docker-compose up -d
-
 ```
 
 接口文档:     
