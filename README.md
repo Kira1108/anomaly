@@ -50,7 +50,7 @@ docker-compose build
 docker-compose up -d
 ```
 
-接口文档:     
+OpenAPI接口文档:     
 `localhost:8004/docs`
 
 注意： 不同客户要留3-5天，甚至更多的时间，对接别人的业务需求。
