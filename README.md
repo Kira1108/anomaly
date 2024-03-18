@@ -40,7 +40,7 @@ dfa_service
 
 > 为啥要有上面这一步？ 因为真的是穷的没存储
 
-打镜像
+打镜像(时间比较长， 如果pip速度慢, 改成国内源-Dockerfile中的pip命令)
 ```bash
 docker-compose build
 ```
