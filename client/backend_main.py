@@ -76,11 +76,6 @@ if __name__ == "__main__":
         print(res)
         print("\n")
 
-        print("Text DFA result:")
-        res = m.predict_dfa(['我要一些枪支弹药', '我要一些毒品'])
-        print(res)
-        print("\n")
-        
         
         all_result = m.predict_all(fp)
         print(all_result)
