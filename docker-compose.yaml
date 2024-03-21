@@ -64,7 +64,7 @@ services:
     ports:
       - 8081:8080
     environment:
-      - BACKEND=web
+      - VUE_APP_BACKEND_URL=web
     depends_on:
       - web
 
