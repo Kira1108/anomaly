@@ -56,6 +56,18 @@ services:
         condition: service_healthy
 
   
+  frontend:
+    build: ./frontend
+    command: npm run serve
+    volumes: 
+      - ./frontend:/app
+    ports:
+      - 8081:8080
+    environment:
+      - BACKEND=web
+    depends_on:
+      - web
+
   mysql:
     image: mysql:8.0
     ports:

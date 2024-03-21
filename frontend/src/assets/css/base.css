@@ -1,0 +1,147 @@
+@charset "UTF-8";
+/*************************************初始化样式 start*********************************/
+html,
+body,
+ul,
+li,
+dl,
+dt,
+dd,
+div,
+input,
+table,
+select,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+table,
+tr,
+th,
+td,
+button,
+p,
+a,
+header,
+footer,
+section,
+img {
+  padding: 0rem;
+  margin: 0rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0rem;
+}
+
+a:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+video {
+  outline: none;
+}
+
+button,
+input {
+  outline: 0rem;
+  border: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+textarea {
+  resize: none;
+  border: none;
+  outline: none;
+}
+
+i {
+  font-style: normal;
+}
+
+body {
+  font-family: "微软雅黑";
+}
+
+.scroll {
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.scroll::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 22px;
+  /*高宽分别对应横竖滚动条的尺寸*/
+  height: 1px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 2px;
+  background-color: rgba(0, 128, 255, 0.15);
+  border: 1px solid #00aaff;
+}
+
+.scroll::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  border-radius: 0;
+  background-color: rgba(0, 51, 153, 0.3);
+}
+
+/* 使用webkit内核的浏览器 */
+input::-webkit-input-placeholder {
+  color: #c2c2c2;
+}
+
+/* Firefox版本4-18 */
+input:-moz-placeholder {
+  color: #c2c2c2;
+}
+
+/* IE浏览器 */
+input:-ms-input-placeholder {
+  color: #c2c2c2;
+}
+/*# sourceMappingURL=base.css.map */
