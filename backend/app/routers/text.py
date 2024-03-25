@@ -20,5 +20,5 @@ router = APIRouter(
 @router.post("/dfa", response_model=TextInfo)
 async def parse_text(texts:TextInput, db: Session = Depends(get_db)):
     r = client.predict_dfa(texts.text)
-    save_text_result(db, r, md5_id())
+    save_text_result(db, r, md5_id(),ip_address = texts.ip_address)
     return r

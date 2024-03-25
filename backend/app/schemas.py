@@ -50,6 +50,7 @@ class Base64Input(BaseModel):
 
 class TextInput(BaseModel):
     text:List[str]
+    ip_address: Optional[str] = None
 
 # --------- output schemas-------------
 class TextOut(BaseModel):
