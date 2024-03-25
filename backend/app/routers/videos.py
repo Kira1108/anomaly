@@ -1,4 +1,4 @@
-from fastapi import APIRouter,File, UploadFile, Depends
+from fastapi import APIRouter,File, UploadFile, Depends, Query
 import os
 from app.config import VIDEO_FILE_PATH
 from app.crud import save_video_raw
@@ -14,8 +14,10 @@ router = APIRouter(
     responses={404: {"description": "Not found"}})
 
 @router.post("/videofile")
-async def create_file(file: bytes = File(default=None),db: Session = Depends(get_db)):
+async def create_file(file: bytes = File(default=None), ip_address:str = Query(default = ""), db: Session = Depends(get_db)):
     content_id = md5_id()
+    content_id =f"{ip_address}_{content_id}"
+    
     filepath = os.path.join(VIDEO_FILE_PATH, f"{content_id}.mp4")
     with open(filepath, "wb") as f:
         f.write(file)

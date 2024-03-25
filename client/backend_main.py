@@ -10,6 +10,8 @@ from schemas import (
     SexInfo
 )
 
+from pathlib import Path
+
 def read_b64(path):
     # Open image
     img = Image.open(path)
@@ -57,11 +59,13 @@ class BackendClient:
         reponse = requests.post(self.all, json={"image": read_b64(path), 'ip_address': ip_address})
         return reponse.json()
     
-    def predict_video(self, path:str):
+    def predict_video(self, path:str, ip_address:str):
         with open(path, 'rb') as f:
             file_data = f.read()
-            response = requests.post(self.video, files={'file': file_data})
+            response = requests.post(self.video, files={'file': ("file", file_data)}, data = {'ip_address':ip_address})
         return response.json()
+
+
 
 
 if __name__ == "__main__":
@@ -70,23 +74,6 @@ if __name__ == "__main__":
     m = BackendClient()
     
     for fp in fps:
-
-        # print("Image: ", fp)
-        
-        # res = m.predict_ocr(fp)
-        # print("OCR Result:")
-        # print(res)
-        # print("\n")
-
-        # print("Window Result:")
-        # res = m.predict_window(fp)
-        # print(res)
-        # print("\n")
-
-        # print("Sex Result:")
-        # res = m.predict_sex(fp)
-        # print(res)
-        # print("\n")
 
         
         all_result = m.predict_all(fp, ip_address = "fuck, what is that")
@@ -98,4 +85,5 @@ if __name__ == "__main__":
     
     
 
-    m.predict_video("/Users/wanghuan/Desktop/ anomaly material/file1.mp4")
+    video_response = m.predict_video("/Users/wanghuan/Desktop/ anomaly material/file1.mp4", ip_address = "bbuuccddffss")
+    print(video_response)
