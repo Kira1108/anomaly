@@ -121,8 +121,8 @@ def process_site(site_folder:str):
         
 def start_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(process_site, 'interval', minutes=1, args=["/Users/wanghuan/Projects/anomaly/hx_client/site1/data"])
-    scheduler.add_job(process_site, 'interval', minutes=1, args=["/Users/wanghuan/Projects/anomaly/hx_client/site2/data"])
+    scheduler.add_job(process_site, 'interval', hours=1, args=["/Users/wanghuan/Projects/anomaly/hx_client/site1/data"])
+    scheduler.add_job(process_site, 'interval', hours=1, args=["/Users/wanghuan/Projects/anomaly/hx_client/site2/data"])
     scheduler.start()
 
     # This is here to simulate application activity (which keeps the main thread alive).
