@@ -69,6 +69,9 @@ class BackendClient:
 
 
 if __name__ == "__main__":
+    
+    
+    
     fps = [ "/Users/wanghuan/Projects/anomaly/client/tests/sex.png", "/Users/wanghuan/Projects/anomaly/client/tests/test.png",]#"./tests/sex.png",
     
     m = BackendClient()
