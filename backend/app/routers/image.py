@@ -20,6 +20,8 @@ from app.ai_client import AnomalyClient
 
 client = AnomalyClient()
 
+
+
 router = APIRouter(
     prefix="/image",
     tags=["image"],
@@ -84,13 +86,15 @@ async def parse_all(image:Base64Input, db: Session = Depends(get_db)):
     save_text_result(db, r_text, content_id, ip_address=image.ip_address, image_path = image_path)
     save_window_result(db, r_window, md5_id(), 0, image_path,ip_address=image.ip_address)  
 
-    return {
+    response = {
         "image_content_id":content_id,
         "is_sensitive":is_sensitive,
         "sex_result": r_sex.sex_model_result, 
         "text_result": r_text.result,
         "window_result":r_window.is_abnormal
         }
+    
+    return response
 
 
 

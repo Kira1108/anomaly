@@ -51,6 +51,9 @@ services:
       - OCR_URL=ocr
       - SEX_URL=sex
       - WINDOW_URL=window
+      - REDIS_HOST=redis
+      - REDIS_PASSWORD=eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+      - REDIS_PORT=6379
     depends_on:
       mysql:
         condition: service_healthy
@@ -81,3 +84,12 @@ services:
       timeout: 15s
       retries: 3
       start_period: 10s
+  
+  redis:
+    image: redis:7.0
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes: 
+      - ./cache:/data

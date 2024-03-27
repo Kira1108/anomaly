@@ -17,6 +17,9 @@ mysql_user = os.getenv("MYSQL_USER")
 mysql_password = os.getenv("MYSQL_PASSWORD")
 mysql_db = os.getenv("MYSQL_DB")
 SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{mysql_user}:{mysql_password}@{mysql_host}:3306/{mysql_db}"
+REDIS_HOST = os.getenv("REDIS_HOST")
+REDIS_PORT = os.getenv("REDIS_PORT")
+REDIS_PASSWORD = os.getenv("REDIS_PASSWORD")
 
 
 def create_tmp_folders():

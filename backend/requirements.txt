@@ -17,3 +17,4 @@ requests
 cryptography
 opencv-python
 APScheduler==3.9.1
+redis
