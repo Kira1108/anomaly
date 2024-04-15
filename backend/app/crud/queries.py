@@ -53,4 +53,3 @@ def get_text_count(db:Session):
     return db.query(func.count(DbText.content_id)).scalar()
 
 
-
