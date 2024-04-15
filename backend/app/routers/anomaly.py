@@ -5,7 +5,8 @@ from app.crud.queries import (
     get_ocr_count,
     get_sex_count, 
     get_text_count, 
-    get_window_count)
+    get_window_count,
+    get_puretext_abnormal)
 from app.schemas import TextOut, WindowOut, SexOut, Base64Output, ImagePathInput
 from fastapi import APIRouter, Depends
 from fastapi import HTTPException, status
@@ -39,6 +40,13 @@ def process_times(start_time, end_time):
 def text_anormaly(db: Session = Depends(get_db), start_time:Optional[datetime] = None, end_time:Optional[datetime] = None):
     start_time, end_time = process_times(start_time, end_time)
     return get_text_abnormal(db,start_time, end_time)
+
+@router.get("/puretext", response_model=Page[TextOut])
+@router.get("/puretext/limit-offset", response_model=LimitOffsetPage[TextOut])
+def text_anormaly(db: Session = Depends(get_db), start_time:Optional[datetime] = None, end_time:Optional[datetime] = None):
+    start_time, end_time = process_times(start_time, end_time)
+    return get_puretext_abnormal(db,start_time, end_time)
+
 
 
 @router.get("/window", response_model=Page[WindowOut])

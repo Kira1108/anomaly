@@ -12,7 +12,18 @@ def get_text_abnormal(db: Session, start_time:datetime, end_time:datetime):
     return paginate(db.query(DbText)\
     .filter(DbText.sensitive == 1)\
     .filter(DbText.create_time >= start_time)\
-    .filter(DbText.create_time < end_time).order_by(DbText.create_time.desc()))
+    .filter(DbText.create_time < end_time)\
+    .filter(DbText.image_path != "pure_text").order_by(DbText.create_time.desc()))
+    
+    
+def get_puretext_abnormal(db: Session, start_time:datetime, end_time:datetime):
+    return paginate(
+        db.query(DbText)\
+        .filter(DbText.sensitive == 1)\
+        .filter(DbText.create_time >= start_time)\
+        .filter(DbText.create_time < end_time)\
+        .filter(DbText.image_path == "pure_text").order_by(DbText.create_time.desc())
+    )
 
 def get_window_abnormal(db: Session, start_time:datetime, end_time:datetime):
     return paginate(
