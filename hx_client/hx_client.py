@@ -60,7 +60,7 @@ class BackendClient:
         return SexInfo(**response.json())
         
     def predict_dfa(self, texts:list, ip_address:str):
-        return TextInfo(**requests.post(self.dfa, json={"text": texts,"ip_adderss": ip_address}).json())
+        return TextInfo(**requests.post(self.dfa, json={"text": texts,"ip_address": ip_address}).json())
     
     def predict_all(self, path:str, ip_address:str):
         reponse = requests.post(self.all, json={"image": read_b64(path), 'ip_address': ip_address})
