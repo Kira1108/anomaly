@@ -104,6 +104,7 @@ def process_site(site_folder:str):
             txt_folder = page_folder / "txt"
             
             # 轮图片
+            
             for img in image_folder.glob("*.png"):
                 logging.info(f"Processing image: {img}")
                 img_path = str(img)
